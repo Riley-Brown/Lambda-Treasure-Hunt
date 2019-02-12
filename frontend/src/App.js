@@ -3,6 +3,12 @@ import './App.css';
 import axios from 'axios';
 require('dotenv').config();
 
+const auth = {
+  headers: {
+    Authorization: `Token ${process.env.REACT_APP_API_KEY}`
+  }
+};
+
 class App extends Component {
   constructor() {
     super();
@@ -15,8 +21,11 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    const api = process.env.API_KEY;
-    console.log(api);
+    const api = 'https://lambda-treasure-hunt.herokuapp.com/api/adv';
+    console.log(auth);
+    axios.get(`${api}/init`, auth).then(res => {
+      console.log(res.data);
+    });
   }
   render() {
     return (
