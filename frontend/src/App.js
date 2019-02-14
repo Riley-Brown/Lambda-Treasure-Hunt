@@ -111,7 +111,14 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <h1 onClick={() => this.handleMovement('n')}>I hate cs</h1>
+        <div>
+          <h3 onClick={() => this.handleMovement('n')}>Go North</h3>
+          <div>
+            <span onClick={() => this.handleMovement('w')}>Go West</span>
+            <span onClick={() => this.handleMovement('e')}>Go East</span>
+          </div>
+          <h3 onClick={() => this.handleMovement('s')}>Go South</h3>
+        </div>
       </div>
     );
   }

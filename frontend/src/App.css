@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url('https://i.imgur.com/l2UFPQ6.png');
   color: #fff;
@@ -13,4 +14,16 @@
 .app h1 {
   font-size: 7rem;
   font-weight: 500;
+}
+
+.app div h3,
+.app div span {
+  /* display: flex;
+  flex-direction: column; */
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 20px;
+  font-size: 2rem;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
