@@ -30,6 +30,7 @@ class App extends Component {
       .get(`${api}/init`)
       .then(res => {
         const { room_id, coordinates, exits, cooldown } = res.data;
+        console.log(res.data);
         this.setState({ room_id, cooldown });
         const prev_room_id = this.state.room_id;
         console.log(this.state.room_id);
@@ -44,14 +45,15 @@ class App extends Component {
       .catch(err => console.error(err));
   }
 
-  updateGraph = (cords, exits, prevRoomId = null, move = null) => {
+  updateGraph = (id, coords, exits, prevRoomId = null, move = null) => {
     let graph = Object.assign({}, this.state.graph);
     if (!this.state.graph[this.state.room_id]) {
       const newGraph = {};
-      newGraph['cords'] = cords;
+      newGraph['cords'] = coords;
 
       const moves = {};
       for (let exit of exits) {
+        console.log(exit);
         moves[exit] = '?';
       }
       newGraph['exits'] = moves;
