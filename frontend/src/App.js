@@ -8,12 +8,6 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 console.log(process.env.REACT_APP_API_KEY);
 
-const auth = {
-  headers: {
-    Authorization: `Token ${process.env.REACT_APP_API_KEY}`
-  }
-};
-
 class App extends Component {
   constructor() {
     super();
@@ -32,20 +26,22 @@ class App extends Component {
       this.setState({ graph });
     }
     const api = 'https://lambda-treasure-hunt.herokuapp.com/api/adv';
-    console.log(auth);
-    axios.get(`${api}/init`).then(res => {
-      const { room_id, coordinates, exits, cooldown } = res.data;
-      this.setState({ room_id, cooldown });
-      const prev_room_id = this.state.room_id;
-      console.log(this.state.room_id);
-      const graph = this.updateGraph(
-        room_id,
-        this.getCoords(coordinates),
-        exits,
-        prev_room_id
-      );
-      this.setState({ graph });
-    });
+    axios
+      .get(`${api}/init`)
+      .then(res => {
+        const { room_id, coordinates, exits, cooldown } = res.data;
+        this.setState({ room_id, cooldown });
+        const prev_room_id = this.state.room_id;
+        console.log(this.state.room_id);
+        const graph = this.updateGraph(
+          room_id,
+          this.getCoords(coordinates),
+          exits,
+          prev_room_id
+        );
+        this.setState({ graph });
+      })
+      .catch(err => console.error(err));
   }
 
   updateGraph = (cords, exits, prevRoomId = null, move = null) => {
@@ -112,8 +108,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1 onClick={() => this.handleMovement('n')}>hello</h1>
+      <div className="app">
+        <h1 onClick={() => this.handleMovement('n')}>I hate cs</h1>
       </div>
     );
   }
