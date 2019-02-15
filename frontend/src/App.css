@@ -30,7 +30,7 @@
 
 .map-container {
   position: relative;
-  display: flex;
+  /* display: flex; */
 }
 .map-div {
   width: 20px;

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import { isAbsolute } from 'path';
 require('dotenv').config();
 
 axios.defaults.headers.common['Authorization'] = process.env.REACT_APP_API_KEY;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
-console.log(process.env.REACT_APP_API_KEY);
+// console.log(process.env.REACT_APP_API_KEY);
 
 class App extends Component {
   constructor() {
@@ -21,7 +22,7 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    console.log(this.handleVisualize());
+    // console.log(this.handleVisualize());
 
     if (localStorage.hasOwnProperty('graph')) {
       const graph = JSON.parse(localStorage.getItem('graph'));
@@ -35,7 +36,7 @@ class App extends Component {
         console.log(res.data);
         this.setState({ room_id, cooldown });
         const prev_room_id = this.state.room_id;
-        console.log(this.state.room_id);
+        // console.log(this.state.room_id);
         const graph = this.updateGraph(
           room_id,
           this.getCoords(coordinates),
@@ -112,7 +113,7 @@ class App extends Component {
 
   handleVisualize = () => {
     let graph = JSON.parse(localStorage.getItem('graph'));
-    console.log(graph);
+    // console.log(graph);
     let keys = Object.keys(graph);
     let values = Object.values(graph);
     let coords = Object.values(values);
@@ -120,13 +121,19 @@ class App extends Component {
     for (let i = 0; i < keys.length; i++) {
       let divStyle = {
         // marginTop: coords[i].cords.x + 'px'
-        top: coords[i].cords.y * 5 + 'px',
-        left: coords[i].cords.x * 5 + 'px',
-        // marginTop: coords[i].cords.y * 3 + 'px',
-        marginRight: coords[i].cords.x + 'px',
-        marginLeft: coords[i].cords.y + 'px'
+        // top: coords[i].cords.y * 5 + 'px',
+        // left: coords[i].cords.x * 5 + 'px',
+        // marginTop: -coords[i].cords.y * 40 - 2000 + 1000 + 'px',
+        // marginLeft: coords[i].cords.x * 40 - 1800 + 'px'
+        // marginLeft: coords[i].cords.y + 'px'
+        position: 'absolute',
+        width: '20px',
+        height: '20px',
+        backgroundColor: 'red',
+        left: coords[i].cords.x * 30 + 'px',
+        top: coords[i].cords.y * 30 + 'px'
       };
-      console.log(coords[i].cords, keys[i]);
+      // console.log(coords[i].cords, keys[i], coords[i]);
       divs.push(
         <div className="map-div" key={keys[i]} style={divStyle}>
           {values.room_id}
