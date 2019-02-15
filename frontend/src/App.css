@@ -2,8 +2,8 @@
   text-align: center;
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center;
+  justify-content: center; */
   flex-direction: column;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url('https://i.imgur.com/l2UFPQ6.png');
@@ -15,6 +15,9 @@
   font-size: 7rem;
   font-weight: 500;
 }
+.app div h3:nth-child(1) {
+  margin-top: 5vh;
+}
 
 .app div h3,
 .app div span {
@@ -24,13 +27,27 @@
   border-radius: 6px;
   padding: 20px;
   font-size: 2rem;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
   cursor: pointer;
+  max-width: 500px;
+  margin: 15px auto;
+  width: 100%;
 }
-
+.app .east-west {
+  display: flex;
+  /* border: 1px solid red; */
+  max-width: 500px;
+  margin: auto;
+  /* width: 100%; */
+}
+.app .east-west span {
+  margin: 0 20px;
+}
 .map-container {
   position: relative;
   /* display: flex; */
+  width: 100%;
+  height: 100%;
 }
 .map-div {
   width: 20px;

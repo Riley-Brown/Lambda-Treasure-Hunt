@@ -130,8 +130,8 @@ class App extends Component {
         width: '20px',
         height: '20px',
         backgroundColor: 'red',
-        left: coords[i].cords.x * 30 + 'px',
-        top: coords[i].cords.y * 30 + 'px'
+        left: (coords[i].cords.x - 30) * 30 + 'px',
+        top: (coords[i].cords.y - 60) * 30 + 'px'
       };
       // console.log(coords[i].cords, keys[i], coords[i]);
       divs.push(
@@ -148,7 +148,7 @@ class App extends Component {
       <div className="app">
         <div>
           <h3 onClick={() => this.handleMovement('n')}>Go North</h3>
-          <div>
+          <div class="east-west">
             <span onClick={() => this.handleMovement('w')}>Go West</span>
             <span onClick={() => this.handleMovement('e')}>Go East</span>
           </div>
