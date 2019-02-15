@@ -123,16 +123,12 @@ class App extends Component {
         position: 'absolute',
         width: '20px',
         height: '20px',
-        backgroundColor: 'red',
+        backgroundColor: this.state.room_id == keys[i] ? 'red' : 'white',
         left: (coords[i].cords.x - 30) * 30 + 'px',
         top: (coords[i].cords.y - 60) * 30 + 'px'
       };
-      // console.log(coords[i].cords, keys[i], coords[i]);
-      divs.push(
-        <div className="map-div" key={keys[i]} style={divStyle}>
-          {values.room_id}
-        </div>
-      );
+      console.log(keys[i]);
+      divs.push(<div className="map-div" key={keys[i]} style={divStyle} />);
     }
     return divs;
   };

@@ -47,7 +47,8 @@
   position: relative;
   /* display: flex; */
   width: 100%;
-  height: 100%;
+  height: 50vh;
+  /* transform: rotate(180deg); */
 }
 .map-div {
   width: 20px;
