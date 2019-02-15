@@ -21,6 +21,8 @@ class App extends Component {
     };
   }
   componentDidMount() {
+    console.log(this.handleVisualize());
+
     if (localStorage.hasOwnProperty('graph')) {
       const graph = JSON.parse(localStorage.getItem('graph'));
       this.setState({ graph });
@@ -108,6 +110,32 @@ class App extends Component {
       .catch(err => console.error(err));
   };
 
+  handleVisualize = () => {
+    let graph = JSON.parse(localStorage.getItem('graph'));
+    console.log(graph);
+    let keys = Object.keys(graph);
+    let values = Object.values(graph);
+    let coords = Object.values(values);
+    let divs = [];
+    for (let i = 0; i < keys.length; i++) {
+      let divStyle = {
+        // marginTop: coords[i].cords.x + 'px'
+        top: coords[i].cords.y * 5 + 'px',
+        left: coords[i].cords.x * 5 + 'px',
+        // marginTop: coords[i].cords.y * 3 + 'px',
+        marginRight: coords[i].cords.x + 'px',
+        marginLeft: coords[i].cords.y + 'px'
+      };
+      console.log(coords[i].cords, keys[i]);
+      divs.push(
+        <div className="map-div" key={keys[i]} style={divStyle}>
+          {values.room_id}
+        </div>
+      );
+    }
+    return divs;
+  };
+
   render() {
     return (
       <div className="app">
@@ -119,6 +147,7 @@ class App extends Component {
           </div>
           <h3 onClick={() => this.handleMovement('s')}>Go South</h3>
         </div>
+        <div className="map-container">{this.handleVisualize()}</div>
       </div>
     );
   }

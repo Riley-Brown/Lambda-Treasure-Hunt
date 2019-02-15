@@ -1,6 +1,6 @@
 .app {
   text-align: center;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,4 +26,15 @@
   font-size: 2rem;
   background: rgba(0, 0, 0, 0.5);
   cursor: pointer;
+}
+
+.map-container {
+  position: relative;
+  display: flex;
+}
+.map-div {
+  width: 20px;
+  height: 20px;
+  background: white;
+  /* position: absolute; */
 }
