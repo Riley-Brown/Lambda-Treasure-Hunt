@@ -120,12 +120,6 @@ class App extends Component {
     let divs = [];
     for (let i = 0; i < keys.length; i++) {
       let divStyle = {
-        // marginTop: coords[i].cords.x + 'px'
-        // top: coords[i].cords.y * 5 + 'px',
-        // left: coords[i].cords.x * 5 + 'px',
-        // marginTop: -coords[i].cords.y * 40 - 2000 + 1000 + 'px',
-        // marginLeft: coords[i].cords.x * 40 - 1800 + 'px'
-        // marginLeft: coords[i].cords.y + 'px'
         position: 'absolute',
         width: '20px',
         height: '20px',
